@@ -1,56 +1,239 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>st-lab7's Dev Log</title>
+    <title>こころ整体院 | 慢性的な肩こり・腰痛ケア</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Shippori+Mincho:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #4caf50;
+            /* Fresh Green */
+            --secondary-color: #81c784;
+            /* Light Green */
+            --bg-color: #f0fff4;
+            /* Very Light Green */
+            --text-color: #333;
+            --white: #ffffff;
+            --accent-color: #ff7043;
+            /* Warm Orange for CTA */
+        }
+
         body {
+            font-family: 'Zen Maru Gothic', sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-        }
-        
-        .container {
-            text-align: center;
-            padding: 2rem;
-            background-color: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
         }
 
-        .container:hover {
-            transform: translateY(-5px);
-        }
-
-        h1 {
-            font-size: 3rem;
+        .logo {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin: 0;
-            color: #006064;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            color: var(--primary-color);
+            letter-spacing: 0.1em;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            /* Placeholder background image from Unsplash (Massage/Spa related) */
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .menu-table th,
+        .menu-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu-table th {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            font-weight: normal;
+            width: 40%;
+        }
+
+        .menu-table td {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        footer {
+            background-color: #333;
+            color: var(--white);
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn-reserve {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(255, 112, 67, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-reserve:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(255, 112, 67, 0.5);
+        }
+
+        .info-text {
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.8;
         }
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .menu-table th,
+            .menu-table td {
+                display: block;
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            .menu-table th {
+                background-color: var(--bg-color);
+                color: var(--primary-color);
+                font-weight: bold;
+                padding-bottom: 0.5rem;
+                border-bottom: none;
+            }
+
+            .menu-table td {
+                padding-top: 0;
+                padding-bottom: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
+
+    <header>
+        <div class="logo">こころ整体院</div>
+    </header>
+
+    <section class="hero">
+        <h1>慢性的な肩こり・腰痛を<br>根本からケア</h1>
+        <p>あなたの体の声に耳を傾け、心身ともに健やかな毎日へ。</p>
+    </section>
+
     <div class="container">
-        <h1>Hello World!<br>This is st-lab7's Dev Log.</h1>
+        <h2 class="section-title">施術メニュー・料金</h2>
+        <table class="menu-table">
+            <tr>
+                <th>全身調整コース（30分）</th>
+                <td>3,000円 (税込)</td>
+            </tr>
+            <tr>
+                <th>じっくり改善コース（60分）</th>
+                <td>5,500円 (税込)</td>
+            </tr>
+            <tr>
+                <th>プレミアム集中コース（90分）</th>
+                <td>8,000円 (税込)</td>
+            </tr>
+        </table>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <a href="#" class="btn-reserve">電話予約はこちら</a>
+            <div class="info-text">
+                <p>〒123-4567 東京都〇〇区〇〇町 1-2-3</p>
+                <p>営業時間: 10:00 - 20:00 (定休日: 水曜日)</p>
+                <p>&copy; 2024 Kokoro Seitaiin. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
+
 </html>
